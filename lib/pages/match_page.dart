@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:match_flutter/constants/constant.dart';
+import 'package:match_flutter/constants/dimension.dart';
 import 'package:match_flutter/constants/routes_helper.dart';
 import 'package:match_flutter/controllers/matches_soccer_controller.dart';
 import 'package:match_flutter/widget/fixture_card.dart';
@@ -15,41 +17,57 @@ class MatchPage extends StatelessWidget {
     }
 
     return Scaffold(
-      body: Column(
-        children: [
-          GetBuilder<TotalMatchController>(
-            builder: (controller) {
-              List playersInTeams = controller.getTeamsOfPlyers(arg);
+      body: Container(
+        width: double.maxFinite,
+        height: 700,
+        child: GetBuilder<TotalMatchController>(
+          builder: (controller) {
+            List playersInTeams = controller.getTeamsOfPlyers(arg);
 
-              String equipo1 = controller.teamToString(controller.team1);
-              String equipo2 = controller.teamToString(controller.team2);
+            String equipo1 = controller.teamToString(controller.team1);
+            String equipo2 = controller.teamToString(controller.team2);
 
-              if (equipo1.length > equipo2.length) {
-                equipo2 = '$equipo2 VACANTE';
-              }
-              return playersInTeams.isNotEmpty
-                  ? Container(
-                      padding:
-                          const EdgeInsets.only(top: 10, left: 10, right: 10),
-                      height: 600,
-                      child: FixtureMatch(
-                          date: 'Next Match',
-                          players1: equipo1,
-                          players2: equipo2,
-                          goalsT1: 0,
-                          goalsT2: 0))
-                  : Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        const CircularProgressIndicator(),
-                        TextButton(
-                            onPressed: () => Get.toNamed(RoutesHelper.initial),
-                            child: const Text('Go to Homepage'))
-                      ],
-                    );
-            },
-          ),
-        ],
+            if (controller.team1.length > controller.team2.length) {
+              equipo2 = '$equipo2 #VACANTE';
+            }
+
+            return Center(
+              child: Container(
+                height: AppDimension.APP_HEIGHT600,
+                width: AppDimension.APP_SCREEN_WIDTH as double,
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: [
+                    playersInTeams.isNotEmpty
+                        ? Container(
+                            padding: const EdgeInsets.only(
+                                top: 10, left: 10, right: 10),
+                            height: 300,
+                            child: FixtureMatch(
+                                date: 'Next Match',
+                                players1: equipo1,
+                                players2: equipo2,
+                                goalsT1: 0,
+                                goalsT2: 0))
+                        : const CircularProgressIndicator(),
+                    const SizedBox(
+                      height: AppDimension.APP_HEIGHT60 / 3,
+                    ),
+                    Container(
+                      height: AppDimension.APP_HEIGHT60 * 2 / 3,
+                      child: ElevatedButton(
+                          style: ElevatedButton.styleFrom(
+                              backgroundColor: AppConstant.APP_BUTTON_COLOR),
+                          onPressed: () => Get.toNamed(RoutesHelper.initial),
+                          child: const Text('Back to Fixture')),
+                    )
+                  ],
+                ),
+              ),
+            );
+          },
+        ),
       ),
     );
   }

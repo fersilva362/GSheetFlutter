@@ -19,12 +19,14 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     Get.find<TotalMatchController>().getAllMatches();
 
-    return GetMaterialApp(
-      theme: ThemeData.dark(),
-      debugShowCheckedModeBanner: false,
-      //home: FixtureMatch(),
-      initialRoute: RoutesHelper.initial,
-      getPages: RoutesHelper.getPages,
+    return GetBuilder<TotalMatchController>(
+      builder: (controller) => GetMaterialApp(
+        theme: ThemeData.dark(),
+        debugShowCheckedModeBanner: false,
+        //home: FixtureMatch(),
+        initialRoute: RoutesHelper.initial,
+        getPages: RoutesHelper.getPages,
+      ),
     );
   }
 }

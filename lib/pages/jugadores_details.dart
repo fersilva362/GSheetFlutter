@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:match_flutter/constants/constant.dart';
+import 'package:match_flutter/constants/dimension.dart';
 import 'package:match_flutter/constants/routes_helper.dart';
 import 'package:match_flutter/controllers/matches_soccer_controller.dart';
 import 'package:adaptive_navbar/adaptive_navbar.dart';
@@ -10,36 +12,40 @@ class Jugadores extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final controller = Get.find<TotalMatchController>();
+    List<dynamic> jugadores = controller.getScore();
     final sw = MediaQuery.of(context).size.width;
     return Scaffold(
       appBar: AdaptiveNavBar(
-        title: Text('TOP SCORES'),
+        title: const Text('TOP SCORES'),
         screenWidth: sw,
         navBarItems: [
           NavBarItem(
-            text: 'Partidos',
+            text: 'Matchs',
             onTap: () => Get.toNamed(RoutesHelper.initial),
           ),
           NavBarItem(
-            text: 'Jugadores',
+            text: 'Players',
             onTap: () => Get.toNamed(RoutesHelper.jugadores),
           ),
           NavBarItem(
-            text: 'Hay equipo?',
+            text: 'Participants',
             onTap: () => Get.toNamed(RoutesHelper.armador),
           )
         ],
       ),
-      body: GetBuilder<TotalMatchController>(
-        builder: (controller) {
-          List<dynamic> jugadores = controller.getScore();
-
-          return Column(
-            children: [
-              Center(
+      body: Column(
+        children: [
+          GetBuilder<TotalMatchController>(
+            builder: (_) {
+              return Center(
                 child: Container(
-                    margin: const EdgeInsets.only(left: 20, right: 20, top: 10),
-                    height: 700 * 0.9,
+                    margin: const EdgeInsets.only(
+                        left: AppDimension.APP_P20,
+                        right: AppDimension.APP_P20,
+                        top: AppDimension.APP_P20 * 3),
+                    height: AppDimension.APP_HEIGHT200 * 2,
+                    width: AppDimension.APP_SCREEN_WIDTH as double,
                     child: ListView.builder(
                       itemCount: jugadores.length,
                       itemBuilder: (context, index) {
@@ -56,10 +62,18 @@ class Jugadores extends StatelessWidget {
                         );
                       },
                     )),
-              ),
-            ],
-          );
-        },
+              );
+            },
+          ),
+          Container(
+            height: AppDimension.APP_HEIGHT60 * 2 / 3,
+            child: ElevatedButton(
+                style: ElevatedButton.styleFrom(
+                    backgroundColor: AppConstant.APP_BUTTON_COLOR),
+                onPressed: () => Get.toNamed(RoutesHelper.armador),
+                child: const Text('I Want To Play')),
+          )
+        ],
       ),
     );
   }
