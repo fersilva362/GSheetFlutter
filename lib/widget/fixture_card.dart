@@ -95,7 +95,7 @@ class FixtureMatch extends StatelessWidget {
                     color: Colors.black,
                     child: Center(
                       child: Text(
-                        '$goalsT1 - $goalsT2',
+                        (date == 'Next Match') ? 'vs' : '$goalsT1 - $goalsT2',
                         style: const TextStyle(fontSize: 18),
                       ),
                     ),

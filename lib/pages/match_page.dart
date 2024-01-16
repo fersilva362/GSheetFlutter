@@ -1,9 +1,8 @@
-import 'dart:math';
-
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:match_flutter/constants/routes_helper.dart';
 import 'package:match_flutter/controllers/matches_soccer_controller.dart';
+import 'package:match_flutter/widget/fixture_card.dart';
 
 class MatchPage extends StatelessWidget {
   const MatchPage({super.key});
@@ -16,46 +15,41 @@ class MatchPage extends StatelessWidget {
     }
 
     return Scaffold(
-      body: GetBuilder<TotalMatchController>(
-        builder: (controller) {
-          List playersInTeams = controller.getTeamsOfPlyers(arg);
+      body: Column(
+        children: [
+          GetBuilder<TotalMatchController>(
+            builder: (controller) {
+              List playersInTeams = controller.getTeamsOfPlyers(arg);
 
-          Map team1 = controller.team1.asMap();
-          Map team2 = controller.team2.asMap();
-          List ArrGhost =
-              List.generate(max(team1.length, team2.length), (index) => index);
+              String equipo1 = controller.teamToString(controller.team1);
+              String equipo2 = controller.teamToString(controller.team2);
 
-          return Column(
-            children: [
-              Text(playersInTeams.isEmpty ? 'isEmpty' : 'Hay Equipo'),
-              Table(
-                children: const [
-                  TableRow(children: [
-                    TableCell(child: Text('Goliat\'s Team')),
-                    TableCell(child: Text('David\'s Team')),
-                  ])
-                ],
-              ),
-              Table(
-                border: TableBorder.all(),
-                children: ArrGhost.map((idx) {
-                  return TableRow(
-                    children: [
-                      TableCell(child: Text(team1[idx]?['name'] ?? 'vacante')),
-                      TableCell(child: Text(team2[idx]?['name'] ?? 'vacante')),
-                    ],
-                  );
-                }).toList(),
-              ),
-              TextButton(
-                onPressed: () {
-                  Get.toNamed(RoutesHelper.initial);
-                },
-                child: Text('inicio'),
-              )
-            ],
-          );
-        },
+              if (equipo1.length > equipo2.length) {
+                equipo2 = '$equipo2 VACANTE';
+              }
+              return playersInTeams.isNotEmpty
+                  ? Container(
+                      padding:
+                          const EdgeInsets.only(top: 10, left: 10, right: 10),
+                      height: 600,
+                      child: FixtureMatch(
+                          date: 'Next Match',
+                          players1: equipo1,
+                          players2: equipo2,
+                          goalsT1: 0,
+                          goalsT2: 0))
+                  : Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        const CircularProgressIndicator(),
+                        TextButton(
+                            onPressed: () => Get.toNamed(RoutesHelper.initial),
+                            child: const Text('Go to Homepage'))
+                      ],
+                    );
+            },
+          ),
+        ],
       ),
     );
   }

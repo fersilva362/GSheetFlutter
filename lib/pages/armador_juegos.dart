@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:get/get_core/src/get_main.dart';
 import 'package:match_flutter/constants/routes_helper.dart';
 import 'package:match_flutter/controllers/matches_soccer_controller.dart';
+import 'package:adaptive_navbar/adaptive_navbar.dart';
 
 class Armador extends StatefulWidget {
   const Armador({super.key});
@@ -35,70 +35,83 @@ class _ArmadorState extends State<Armador> {
   Widget build(BuildContext context) {
     final days = _days;
     List<String> dayKeys = [];
+    final sw = MediaQuery.of(context).size.width;
     return Scaffold(
-      body: Column(
-        children: [
-          Column(
-            children: [
-              TextFormField(
-                controller: _textEditingController,
-                decoration: const InputDecoration(
-                  hintText: 'I wanna play!',
-                  labelText: 'Name *',
-                ),
-              ),
-              TextButton(
-                  onPressed: () {
-                    setState(() {
-                      days.putIfAbsent(
-                          _textEditingController.text, () => false);
-                    });
-                  },
-                  child: const Text('Send'))
-            ],
+      appBar: AdaptiveNavBar(
+        title: Text('QUIERO JUGAR EQUIPO'),
+        screenWidth: sw,
+        navBarItems: [
+          NavBarItem(
+            text: 'Partidos',
+            onTap: () => Get.toNamed(RoutesHelper.initial),
           ),
-          GetBuilder<TotalMatchController>(
-            builder: (controller) {
-              dayKeys.addAll(days.keys);
-              return Column(
-                children: [
-                  TextButton(
-                      onPressed: () => Get.toNamed(RoutesHelper.initial),
-                      child: Text('go to partido')),
-                  Container(
-                    height: 500,
-                    child: ListView.builder(
-                      itemCount: days.length,
-                      itemBuilder: (context, index) {
-                        String key = dayKeys[index];
-                        return CheckboxListTile.adaptive(
-                          value: days[key],
-                          onChanged: (value) => setState(() {
-                            days[key] = value!;
-                          }),
-                          title: Text(key),
-                        );
-                      },
-                    ),
-                  ),
-                  Text('Armador de equipo'),
-                  TextButton(
-                    onPressed: () {
-                      Get.toNamed(RoutesHelper.jugadores);
-                    },
-                    child: Text('back to jugadores'),
-                  ),
-                  TextButton(
-                    onPressed: () {
-                      Get.toNamed(RoutesHelper.hayEquipo, arguments: days);
-                    },
-                    child: Text('go to Hay equipo'),
-                  )
-                ],
-              );
-            },
+          NavBarItem(
+            text: 'Jugadores',
+            onTap: () => Get.toNamed(RoutesHelper.jugadores),
           ),
+          NavBarItem(
+            text: 'Hay equipo?',
+            onTap: () => Get.toNamed(RoutesHelper.armador),
+          )
         ],
+      ),
+      body: Container(
+        margin: const EdgeInsets.only(left: 20, right: 20, top: 10),
+        child: Column(
+          children: [
+            Column(
+              children: [
+                TextFormField(
+                  controller: _textEditingController,
+                  decoration: const InputDecoration(
+                    hintText: 'I wanna play!',
+                    labelText: 'Add new Player',
+                  ),
+                ),
+                TextButton(
+                    onPressed: () {
+                      setState(() {
+                        days.putIfAbsent(
+                            _textEditingController.text, () => false);
+                      });
+                    },
+                    child: const Text('ADD'))
+              ],
+            ),
+            GetBuilder<TotalMatchController>(
+              builder: (controller) {
+                dayKeys.addAll(days.keys);
+                return Column(
+                  children: [
+                    Container(
+                      height: 300,
+                      child: ListView.builder(
+                        itemCount: days.length,
+                        itemBuilder: (context, index) {
+                          String key = dayKeys[index];
+                          return CheckboxListTile.adaptive(
+                            value: days[key],
+                            onChanged: (value) => setState(() {
+                              days[key] = value!;
+                            }),
+                            title: Text(key),
+                          );
+                        },
+                      ),
+                    ),
+                    Text('ARMAR EQUIPO'),
+                    TextButton(
+                      onPressed: () {
+                        Get.toNamed(RoutesHelper.hayEquipo, arguments: days);
+                      },
+                      child: Text('go to Hay equipo'),
+                    )
+                  ],
+                );
+              },
+            ),
+          ],
+        ),
       ),
     );
   }

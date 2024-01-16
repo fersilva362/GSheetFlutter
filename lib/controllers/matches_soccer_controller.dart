@@ -126,10 +126,6 @@ class TotalMatchController extends GetxController {
     }
 
     final baggyCompact = baggy.expand((element) => element).toList();
-
-    // print('this is $baggy baggy');
-    // print('aray is $array');
-
     var bag1 = [];
     for (var item in array) {
       final draft = baggyCompact.where((obj) => obj['name'] == item);
@@ -139,20 +135,6 @@ class TotalMatchController extends GetxController {
       }
     }
     baggy.add(bag1);
-    //print('bag1 is $bag1');
-
-    /* for (var addedPlayer in baggyCompact) {
-      final newAdded =
-          array.where((element) => element != addedPlayer['name']).toList();
-      print('addedPlayer is $addedPlayer');
-      print('newAdded ${newAdded[0]}');
-      if (newAdded.isNotEmpty) {
-        baggy.add([
-          {'name': newAdded[0], 'match': 0, 'goals': 0}
-        ]);
-      } else {}
-    } */
-    print('this is $baggy baggyUpdated');
     _playersSoccer = [];
 
     final newDataPlayer = baggy.expand((element) => element).toList()
@@ -168,5 +150,15 @@ class TotalMatchController extends GetxController {
     }
 
     return newDataPlayer;
+  }
+
+  String teamToString(team) {
+    var _team = team;
+    var str = _team.map((e) => e['name']).toList();
+    var _strTeam = '';
+    for (var word in str) {
+      _strTeam = _strTeam + ' ' + word;
+    }
+    return _strTeam;
   }
 }

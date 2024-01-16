@@ -1,66 +1,62 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_bootstrap5/flutter_bootstrap5.dart';
 import 'package:get/get.dart';
-import 'package:get/instance_manager.dart';
 import 'package:match_flutter/constants/routes_helper.dart';
 import 'package:match_flutter/controllers/matches_soccer_controller.dart';
+import 'package:adaptive_navbar/adaptive_navbar.dart';
+import 'package:match_flutter/widget/top_score.dart';
 
 class Jugadores extends StatelessWidget {
   const Jugadores({super.key});
 
   @override
   Widget build(BuildContext context) {
+    final sw = MediaQuery.of(context).size.width;
     return Scaffold(
+      appBar: AdaptiveNavBar(
+        title: Text('TOP SCORES'),
+        screenWidth: sw,
+        navBarItems: [
+          NavBarItem(
+            text: 'Partidos',
+            onTap: () => Get.toNamed(RoutesHelper.initial),
+          ),
+          NavBarItem(
+            text: 'Jugadores',
+            onTap: () => Get.toNamed(RoutesHelper.jugadores),
+          ),
+          NavBarItem(
+            text: 'Hay equipo?',
+            onTap: () => Get.toNamed(RoutesHelper.armador),
+          )
+        ],
+      ),
       body: GetBuilder<TotalMatchController>(
         builder: (controller) {
           List<dynamic> jugadores = controller.getScore();
 
           return Column(
             children: [
-              TextButton(
-                  onPressed: () => Get.toNamed(RoutesHelper.armador),
-                  child: Text('go to armador')),
-              Column(
-                children: [
-                  Table(
-                    children: const [
-                      TableRow(children: [
-                        TableCell(child: Text('Name')),
-                        TableCell(child: Text('Matches played')),
-                        TableCell(child: Text('Goals')),
-                        TableCell(child: Text('Rank')),
-                      ])
-                    ],
-                  ),
-                  Table(
-                      border: TableBorder.all(),
-                      children: jugadores.map((obj) {
-                        final name = obj['name'];
-                        final match = obj['match'];
-                        final goals = obj['goals'];
-                        final score = goals / match;
-                        return TableRow(
-                          children: [
-                            TableCell(
-                              child: Text(name),
-                            ),
-                            TableCell(
-                              child: Text(match.toString()),
-                            ),
-                            TableCell(
-                              child: Text(goals.toString()),
-                            ),
-                            TableCell(
-                              child: Text(score.toString()),
-                            ),
-                          ],
+              Center(
+                child: Container(
+                    margin: const EdgeInsets.only(left: 20, right: 20, top: 10),
+                    height: 700 * 0.9,
+                    child: ListView.builder(
+                      itemCount: jugadores.length,
+                      itemBuilder: (context, index) {
+                        final name = jugadores[index]['name'];
+                        final match = jugadores[index]['match'];
+                        final goals = jugadores[index]['goals'];
+                        final int score = (goals / match).round();
+
+                        return TopScores(
+                          name: name,
+                          match: match,
+                          score: score,
+                          index: index + 1,
                         );
-                      }).toList()),
-                ],
+                      },
+                    )),
               ),
-              TextButton(
-                  onPressed: () => Get.toNamed(RoutesHelper.initial),
-                  child: Text('back to partidos'))
             ],
           );
         },

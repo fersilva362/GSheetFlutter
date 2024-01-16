@@ -11,37 +11,51 @@ class Partidos extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    //final sw = MediaQuery.of(context).size.width;
+    final sw = MediaQuery.of(context).size.width;
 
-    return Scaffold(
-      body: GetBuilder<TotalMatchController>(
-        builder: (controller) {
-          List<dynamic> allMatchesPlayed = controller.totalMatches;
-          print('all matches $allMatchesPlayed');
+    return GetBuilder<TotalMatchController>(builder: (controller) {
+      List<dynamic> allMatchesPlayed = controller.totalMatches;
+      return Scaffold(
+        appBar: AdaptiveNavBar(
+          title: Text('FUTBOL CON AMIGOS'),
+          screenWidth: sw,
+          navBarItems: [
+            NavBarItem(
+              text: 'Partidos',
+              onTap: () => Get.toNamed(RoutesHelper.initial),
+            ),
+            NavBarItem(
+              text: 'Jugadores',
+              onTap: () => Get.toNamed(RoutesHelper.jugadores),
+            ),
+            NavBarItem(
+              text: 'Hay equipo?',
+              onTap: () => Get.toNamed(RoutesHelper.armador),
+            )
+          ],
+        ),
+        body: controller.isLoaded
+            ? Container(
+                padding: const EdgeInsets.only(top: 10, left: 10, right: 10),
+                height: 600,
+                child: ListView.builder(
+                  itemCount: allMatchesPlayed.length,
+                  itemBuilder: (context, index) {
+                    MatchSoccer match = allMatchesPlayed[index];
+                    print(index);
 
-          return controller.isLoaded
-              ? Container(
-                  padding: const EdgeInsets.only(top: 10, left: 10, right: 10),
-                  height: 600,
-                  child: ListView.builder(
-                    itemCount: allMatchesPlayed.length,
-                    itemBuilder: (context, index) {
-                      MatchSoccer match = allMatchesPlayed[index];
-                      print(index);
-
-                      return FixtureMatch(
-                          date: match.date!,
-                          players1: match.players1!,
-                          players2: match.players2!,
-                          goalsT1: match.goalsT1!,
-                          goalsT2: match.goalsT2!);
-                    },
-                  ),
-                )
-              : const CircularProgressIndicator();
-        },
-      ),
-    );
+                    return FixtureMatch(
+                        date: match.date!,
+                        players1: match.players1!,
+                        players2: match.players2!,
+                        goalsT1: match.goalsT1!,
+                        goalsT2: match.goalsT2!);
+                  },
+                ),
+              )
+            : const CircularProgressIndicator(),
+      );
+    });
   }
 
   /* @override
