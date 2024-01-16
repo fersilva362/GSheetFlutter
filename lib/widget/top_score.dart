@@ -19,22 +19,26 @@ class TopScores extends StatelessWidget {
       decoration: const BoxDecoration(
           boxShadow: [
             BoxShadow(
-                offset: Offset(1, 1),
-                blurRadius: 3,
-                color: Color.fromARGB(255, 230, 230, 230))
+              offset: Offset(1, 1),
+              blurRadius: 3,
+              color: Color.fromARGB(255, 230, 230, 230),
+            )
           ],
-          color: Colors.black,
+          gradient: LinearGradient(colors: [
+            Color.fromARGB(255, 191, 27, 28),
+            Colors.black,
+          ]),
           borderRadius: BorderRadius.only(
               topLeft: Radius.circular(50), bottomLeft: Radius.circular(50))),
-      width: 300,
-      height: 50,
+      width: 150,
+      height: 60,
       margin: const EdgeInsets.only(left: 10, right: 10, top: 10, bottom: 5),
       child: Column(
         children: [
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              SizedBox(
+              const SizedBox(
                 width: 50,
               ),
               Padding(
@@ -51,17 +55,21 @@ class TopScores extends StatelessWidget {
                     Text(
                       '${match.toString()} partidos jugados',
                       style: const TextStyle(fontSize: 10),
+                    ),
+                    Text(
+                      'score: ${score.toString()} on basis of neat goals',
+                      style: const TextStyle(fontSize: 10),
                     )
                   ],
                 ),
               ),
-              SizedBox(
+              const SizedBox(
                 width: 50,
               ),
               Container(
-                width: 100,
-                height: 50,
-                decoration: BoxDecoration(
+                width: 60,
+                height: 60,
+                decoration: const BoxDecoration(
                   color: AppConstant.APP_GREEN,
                 ),
                 child: Center(
