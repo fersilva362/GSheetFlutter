@@ -40,7 +40,7 @@ class Partidos extends StatelessWidget {
                         right: AppDimension.APP_P10,
                         bottom: AppDimension.APP_P20),
                     height: AppDimension.APP_HEIGHT600,
-                    width: AppDimension.APP_SCREEN_WIDTH as double,
+                    width: AppDimension.APP_SCREEN_WIDTH,
                     child: ListView.builder(
                       itemCount: allMatchesPlayed.length,
                       itemBuilder: (context, index) {

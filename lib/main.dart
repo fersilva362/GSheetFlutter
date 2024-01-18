@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:match_flutter/constants/routes_helper.dart';
 import 'package:match_flutter/controllers/matches_soccer_controller.dart';
-import 'package:match_flutter/widget/fixture_card.dart';
 import 'api/dependecies_soccer.dart' as dep;
 
 void main() async {
@@ -23,7 +22,6 @@ class MyApp extends StatelessWidget {
       builder: (controller) => GetMaterialApp(
         theme: ThemeData.dark(),
         debugShowCheckedModeBanner: false,
-        //home: FixtureMatch(),
         initialRoute: RoutesHelper.initial,
         getPages: RoutesHelper.getPages,
       ),

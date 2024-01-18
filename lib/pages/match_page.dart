@@ -17,7 +17,7 @@ class MatchPage extends StatelessWidget {
     }
 
     return Scaffold(
-      body: Container(
+      body: SizedBox(
         width: double.maxFinite,
         height: 700,
         child: GetBuilder<TotalMatchController>(
@@ -32,9 +32,9 @@ class MatchPage extends StatelessWidget {
             }
 
             return Center(
-              child: Container(
+              child: SizedBox(
                 height: AppDimension.APP_HEIGHT600,
-                width: AppDimension.APP_SCREEN_WIDTH as double,
+                width: AppDimension.APP_SCREEN_WIDTH,
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   crossAxisAlignment: CrossAxisAlignment.center,
@@ -54,7 +54,7 @@ class MatchPage extends StatelessWidget {
                     const SizedBox(
                       height: AppDimension.APP_HEIGHT60 / 3,
                     ),
-                    Container(
+                    SizedBox(
                       height: AppDimension.APP_HEIGHT60 * 2 / 3,
                       child: ElevatedButton(
                           style: ElevatedButton.styleFrom(

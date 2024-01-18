@@ -28,7 +28,7 @@ class FixtureMatch extends StatelessWidget {
           Row(
             children: [
               Container(
-                padding: EdgeInsets.only(left: 10, right: 10),
+                padding: const EdgeInsets.only(left: 10, right: 10),
                 decoration: const BoxDecoration(
                     color: AppConstant.APP_GREEN,
                     borderRadius: BorderRadius.only(
@@ -67,41 +67,46 @@ class FixtureMatch extends StatelessWidget {
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
+                //player 1
                 Container(
                   padding: const EdgeInsets.only(
                       top: 5, left: 5, right: 5, bottom: 10),
                   width: 200,
                   height: 75,
-                  //color: AppConstant.APP_BLACK,
                   child: Row(
-                    mainAxisAlignment: MainAxisAlignment.end,
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      Expanded(child: Container()),
+                      //text player1
                       Container(
+                        padding: const EdgeInsets.only(left: 10),
                         width: 120,
-                        child: Text(
-                          players1.split(re).join('  ').toUpperCase(),
-                          maxLines: 3,
+                        child: Center(
+                          child: Text(
+                            players1.split(re).join('  ').toUpperCase(),
+                            maxLines: 3,
+                          ),
                         ),
                       ),
+                      //blank
                       const SizedBox(
                         width: 10,
                       ),
+                      //image
                       Container(
                         width: 50,
                         height: 50,
                         decoration: const BoxDecoration(
                             image: DecorationImage(
-                                image: AssetImage('assets/logo_players1.png'))),
+                                image: AssetImage('assets/logo_players1.png'),
+                                fit: BoxFit.contain)),
                       )
                     ],
                   ),
                 ),
+                //marcador
                 Expanded(
-                  child: Container(
-                    // height: 50,
+                  child: SizedBox(
                     width: 50,
-                    //  color: AppConstant.APP_BLACK,
                     child: Center(
                       child: Text(
                         (date == 'Next Match') ? 'vs' : '$goalsT1 - $goalsT2',
@@ -110,33 +115,38 @@ class FixtureMatch extends StatelessWidget {
                     ),
                   ),
                 ),
+                // player 2
                 Container(
                   padding: const EdgeInsets.only(
                       top: 5, left: 5, right: 5, bottom: 10),
                   width: 200,
-                  // height: 50,
-                  // color: AppConstant.APP_BLACK,
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
+                      //logo team 2
                       Container(
                         width: 50,
                         height: 50,
                         decoration: const BoxDecoration(
                             image: DecorationImage(
-                                image: AssetImage('assets/logo_players2.png'))),
+                                image: AssetImage('assets/logo_players2.png'),
+                                fit: BoxFit.contain)),
                       ),
+                      //blank space
                       const SizedBox(
                         width: 10,
                       ),
+                      //text player2
                       Container(
+                        padding: const EdgeInsets.only(right: 10),
                         width: 120,
-                        child: Text(
-                          players2.split(re).join('  ').toUpperCase(),
-                          maxLines: 3,
+                        child: Center(
+                          child: Text(
+                            players2.split(re).join('  ').toUpperCase(),
+                            maxLines: 3,
+                          ),
                         ),
                       ),
-                      Expanded(child: Container()),
                     ],
                   ),
                 ),

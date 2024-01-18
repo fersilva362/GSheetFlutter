@@ -18,20 +18,21 @@ class TopScores extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       decoration: const BoxDecoration(
-          gradient: LinearGradient(colors: [
-            AppConstant.APP_BLACK,
-            AppConstant.APP_BLACK,
-            AppConstant.APP_RED
-          ], begin: Alignment.centerLeft, end: Alignment.topRight),
-          boxShadow: [
-            BoxShadow(
-              offset: Offset(2, 2),
-              blurRadius: 1,
-              color: AppConstant.APP_SHADOW,
-            ),
-          ],
-          borderRadius: BorderRadius.only(
-              topLeft: Radius.circular(50), bottomLeft: Radius.circular(50))),
+        gradient: LinearGradient(colors: [
+          AppConstant.APP_BLACK,
+          AppConstant.APP_BLACK,
+          AppConstant.APP_RED
+        ], begin: Alignment.centerLeft, end: Alignment.topRight),
+        boxShadow: [
+          BoxShadow(
+            offset: Offset(2, 2),
+            blurRadius: 1,
+            color: AppConstant.APP_SHADOW,
+          ),
+        ],
+        /* borderRadius: BorderRadius.only(
+              topLeft: Radius.circular(50), bottomLeft: Radius.circular(50)) */
+      ),
       width: 150,
       height: 60,
       margin: const EdgeInsets.only(

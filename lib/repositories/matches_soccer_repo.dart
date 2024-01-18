@@ -12,7 +12,6 @@ class TotalMatchRepo extends GetxService {
     if (response.isNotEmpty) {
       return response;
     } else {
-      print('error, is empty in repo');
       return response;
     }
   }

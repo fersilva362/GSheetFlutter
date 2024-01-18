@@ -17,7 +17,7 @@ class Jugadores extends StatelessWidget {
     final sw = MediaQuery.of(context).size.width;
     return Scaffold(
       appBar: AdaptiveNavBar(
-        title: const Text('TOP SCORES'),
+        title: const Text('FUTBOL ENTRE AMIGOS'),
         screenWidth: sw,
         navBarItems: [
           NavBarItem(
@@ -29,7 +29,7 @@ class Jugadores extends StatelessWidget {
             onTap: () => Get.toNamed(RoutesHelper.jugadores),
           ),
           NavBarItem(
-            text: 'Participants',
+            text: 'Squad builder',
             onTap: () => Get.toNamed(RoutesHelper.armador),
           )
         ],
@@ -45,7 +45,7 @@ class Jugadores extends StatelessWidget {
                         right: AppDimension.APP_P20,
                         top: AppDimension.APP_P20 * 3),
                     height: AppDimension.APP_HEIGHT200 * 2,
-                    width: AppDimension.APP_SCREEN_WIDTH as double,
+                    width: AppDimension.APP_SCREEN_WIDTH,
                     child: ListView.builder(
                       itemCount: jugadores.length,
                       itemBuilder: (context, index) {
@@ -65,7 +65,7 @@ class Jugadores extends StatelessWidget {
               );
             },
           ),
-          Container(
+          SizedBox(
             height: AppDimension.APP_HEIGHT60 * 2 / 3,
             child: ElevatedButton(
                 style: ElevatedButton.styleFrom(

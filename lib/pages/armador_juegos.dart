@@ -14,13 +14,11 @@ class Armador extends StatefulWidget {
 }
 
 class _ArmadorState extends State<Armador> {
-  @override
   late Map<String, bool> _days;
-  late TextEditingController _textEditingController;
 
-  // List<String> dayKeys = [];
+  late TextEditingController _textEditingController;
+  @override
   void initState() {
-    // TODO: implement initState
     super.initState();
     _days = Get.find<TotalMatchController>().getAttendantPlayers();
 
@@ -29,7 +27,6 @@ class _ArmadorState extends State<Armador> {
 
   @override
   void dispose() {
-    // TODO: implement dispose
     super.dispose();
     _textEditingController.dispose();
   }
@@ -42,19 +39,19 @@ class _ArmadorState extends State<Armador> {
     final sw = MediaQuery.of(context).size.width;
     return Scaffold(
       appBar: AdaptiveNavBar(
-        title: const Text('QUIERO JUGAR EQUIPO'),
+        title: const Text('FUTBOL ENTRE AMIGOS'),
         screenWidth: sw,
         navBarItems: [
           NavBarItem(
-            text: 'Partidos',
+            text: 'Matchs',
             onTap: () => Get.toNamed(RoutesHelper.initial),
           ),
           NavBarItem(
-            text: 'Jugadores',
+            text: 'Players',
             onTap: () => Get.toNamed(RoutesHelper.jugadores),
           ),
           NavBarItem(
-            text: 'Hay equipo?',
+            text: 'Squads builder',
             onTap: () => Get.toNamed(RoutesHelper.armador),
           )
         ],
@@ -62,7 +59,7 @@ class _ArmadorState extends State<Armador> {
       body: Center(
         child: Container(
           height: AppDimension.APP_HEIGHT600,
-          width: AppDimension.APP_SCREEN_WIDTH as double,
+          width: AppDimension.APP_SCREEN_WIDTH,
           margin: const EdgeInsets.only(left: 20, right: 20, top: 10),
           child: Column(
             children: [
@@ -85,44 +82,40 @@ class _ArmadorState extends State<Armador> {
                       child: const Text('ADD'))
                 ],
               ),
-              Container(
-                child: GetBuilder<TotalMatchController>(
-                  builder: (controller) {
-                    dayKeys.addAll(days.keys);
-                    return Column(
-                      children: [
-                        Container(
-                          height: AppDimension.APP_HEIGHT200 * 2,
-                          child: ListView.builder(
-                            itemCount: days.length,
-                            itemBuilder: (context, index) {
-                              String key = dayKeys[index];
-                              return CheckboxListTile.adaptive(
-                                activeColor: AppConstant.APP_GREEN,
-                                value: days[key],
-                                onChanged: (value) => setState(() {
-                                  days[key] = value!;
-                                }),
-                                title: Text(key.toUpperCase()),
-                              );
-                            },
-                          ),
+              GetBuilder<TotalMatchController>(
+                builder: (controller) {
+                  dayKeys.addAll(days.keys);
+                  return Column(
+                    children: [
+                      SizedBox(
+                        height: AppDimension.APP_HEIGHT200 * 2,
+                        child: ListView.builder(
+                          itemCount: days.length,
+                          itemBuilder: (context, index) {
+                            String key = dayKeys[index];
+                            return CheckboxListTile.adaptive(
+                              activeColor: AppConstant.APP_GREEN,
+                              value: days[key],
+                              onChanged: (value) => setState(() {
+                                days[key] = value!;
+                              }),
+                              title: Text(key.toUpperCase()),
+                            );
+                          },
                         ),
-                        Container(
-                          height: AppDimension.APP_HEIGHT60 * 2 / 3,
-                          child: ElevatedButton(
-                              style: ElevatedButton.styleFrom(
-                                  backgroundColor:
-                                      AppConstant.APP_BUTTON_COLOR),
-                              onPressed: () => Get.toNamed(
-                                  RoutesHelper.hayEquipo,
-                                  arguments: days),
-                              child: const Text('Get Soccer Teams')),
-                        )
-                      ],
-                    );
-                  },
-                ),
+                      ),
+                      SizedBox(
+                        height: AppDimension.APP_HEIGHT60 * 2 / 3,
+                        child: ElevatedButton(
+                            style: ElevatedButton.styleFrom(
+                                backgroundColor: AppConstant.APP_BUTTON_COLOR),
+                            onPressed: () => Get.toNamed(RoutesHelper.hayEquipo,
+                                arguments: days),
+                            child: const Text('Get Soccer Teams')),
+                      )
+                    ],
+                  );
+                },
               )
             ],
           ),
