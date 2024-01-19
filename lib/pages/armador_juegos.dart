@@ -85,39 +85,42 @@ class _ArmadorState extends State<Armador> {
               GetBuilder<TotalMatchController>(
                 builder: (controller) {
                   dayKeys.addAll(days.keys);
-                  return Column(
-                    children: [
-                      Container(
-                        color: Colors.transparent,
-                        height: AppDimension.APP_HEIGHT200 +
-                            AppDimension.APP_HEIGHT60,
-                        child: ListView.builder(
-                          itemCount: days.length,
-                          itemBuilder: (context, index) {
-                            String key = dayKeys[index];
-                            return CheckboxListTile.adaptive(
-                              activeColor: AppConstant.APP_GREEN,
-                              value: days[key],
-                              onChanged: (value) => setState(() {
-                                days[key] = value!;
-                              }),
-                              title: Text(key.toUpperCase()),
-                            );
-                          },
-                        ),
-                      ),
-                      SizedBox(
-                        height: AppDimension.APP_HEIGHT60 * 2 / 3,
-                        child: ElevatedButton(
-                            style: ElevatedButton.styleFrom(
-                                backgroundColor: AppConstant.APP_BUTTON_COLOR),
-                            onPressed: () {
-                              Get.toNamed(RoutesHelper.hayEquipo,
-                                  arguments: days);
+                  return SingleChildScrollView(
+                    child: Column(
+                      children: [
+                        Container(
+                          color: Colors.transparent,
+                          height: AppDimension.APP_HEIGHT200 +
+                              AppDimension.APP_HEIGHT60,
+                          child: ListView.builder(
+                            itemCount: days.length,
+                            itemBuilder: (context, index) {
+                              String key = dayKeys[index];
+                              return CheckboxListTile.adaptive(
+                                activeColor: AppConstant.APP_GREEN,
+                                value: days[key],
+                                onChanged: (value) => setState(() {
+                                  days[key] = value!;
+                                }),
+                                title: Text(key.toUpperCase()),
+                              );
                             },
-                            child: const Text('Get Soccer Teams')),
-                      )
-                    ],
+                          ),
+                        ),
+                        SizedBox(
+                          height: AppDimension.APP_HEIGHT60 * 2 / 3,
+                          child: ElevatedButton(
+                              style: ElevatedButton.styleFrom(
+                                  backgroundColor:
+                                      AppConstant.APP_BUTTON_COLOR),
+                              onPressed: () {
+                                Get.toNamed(RoutesHelper.hayEquipo,
+                                    arguments: days);
+                              },
+                              child: const Text('Get Soccer Teams')),
+                        )
+                      ],
+                    ),
                   );
                 },
               )

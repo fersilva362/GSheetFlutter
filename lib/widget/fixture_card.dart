@@ -93,8 +93,8 @@ class FixtureMatch extends StatelessWidget {
                       ),
                       //image
                       Container(
-                        width: 50,
-                        height: 50,
+                        width: 45,
+                        height: 45,
                         decoration: const BoxDecoration(
                             image: DecorationImage(
                                 image: AssetImage('assets/logo_players1.png'),
@@ -110,7 +110,7 @@ class FixtureMatch extends StatelessWidget {
                     child: Center(
                       child: Text(
                         (date == 'Next Match') ? 'vs' : '$goalsT1 - $goalsT2',
-                        style: const TextStyle(fontSize: 18),
+                        style: const TextStyle(fontSize: 16),
                       ),
                     ),
                   ),
@@ -125,8 +125,8 @@ class FixtureMatch extends StatelessWidget {
                     children: [
                       //logo team 2
                       Container(
-                        width: 50,
-                        height: 50,
+                        width: 45,
+                        height: 45,
                         decoration: const BoxDecoration(
                             image: DecorationImage(
                                 image: AssetImage('assets/logo_players2.png'),
