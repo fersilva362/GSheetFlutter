@@ -87,8 +87,10 @@ class _ArmadorState extends State<Armador> {
                   dayKeys.addAll(days.keys);
                   return Column(
                     children: [
-                      SizedBox(
-                        height: AppDimension.APP_HEIGHT200 * 2,
+                      Container(
+                        color: Colors.transparent,
+                        height: AppDimension.APP_HEIGHT200 +
+                            AppDimension.APP_HEIGHT60,
                         child: ListView.builder(
                           itemCount: days.length,
                           itemBuilder: (context, index) {
@@ -109,8 +111,10 @@ class _ArmadorState extends State<Armador> {
                         child: ElevatedButton(
                             style: ElevatedButton.styleFrom(
                                 backgroundColor: AppConstant.APP_BUTTON_COLOR),
-                            onPressed: () => Get.toNamed(RoutesHelper.hayEquipo,
-                                arguments: days),
+                            onPressed: () {
+                              Get.toNamed(RoutesHelper.hayEquipo,
+                                  arguments: days);
+                            },
                             child: const Text('Get Soccer Teams')),
                       )
                     ],

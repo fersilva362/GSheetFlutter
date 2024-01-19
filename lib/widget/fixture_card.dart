@@ -71,7 +71,7 @@ class FixtureMatch extends StatelessWidget {
                 Container(
                   padding: const EdgeInsets.only(
                       top: 5, left: 5, right: 5, bottom: 10),
-                  width: 200,
+                  // width: 200,
                   height: 75,
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -79,7 +79,7 @@ class FixtureMatch extends StatelessWidget {
                       //text player1
                       Container(
                         padding: const EdgeInsets.only(left: 10),
-                        width: 120,
+                        // width: 120,
                         child: Center(
                           child: Text(
                             players1.split(re).join('  ').toUpperCase(),
@@ -119,7 +119,7 @@ class FixtureMatch extends StatelessWidget {
                 Container(
                   padding: const EdgeInsets.only(
                       top: 5, left: 5, right: 5, bottom: 10),
-                  width: 200,
+                  // width: 200,
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
@@ -139,7 +139,7 @@ class FixtureMatch extends StatelessWidget {
                       //text player2
                       Container(
                         padding: const EdgeInsets.only(right: 10),
-                        width: 120,
+                        //width: 120,
                         child: Center(
                           child: Text(
                             players2.split(re).join('  ').toUpperCase(),

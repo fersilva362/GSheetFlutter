@@ -40,11 +40,12 @@ class Jugadores extends StatelessWidget {
             builder: (_) {
               return Center(
                 child: Container(
+                    color: Colors.transparent,
                     margin: const EdgeInsets.only(
                         left: AppDimension.APP_P20,
                         right: AppDimension.APP_P20,
                         top: AppDimension.APP_P20 * 3),
-                    height: AppDimension.APP_HEIGHT200 * 2,
+                    height: AppDimension.APP_HEIGHT200 * 3 / 2,
                     width: AppDimension.APP_SCREEN_WIDTH,
                     child: ListView.builder(
                       itemCount: jugadores.length,
@@ -64,6 +65,9 @@ class Jugadores extends StatelessWidget {
                     )),
               );
             },
+          ),
+          const SizedBox(
+            height: 20,
           ),
           SizedBox(
             height: AppDimension.APP_HEIGHT60 * 2 / 3,

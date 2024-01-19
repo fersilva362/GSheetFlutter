@@ -50,7 +50,18 @@ class MatchPage extends StatelessWidget {
                                 players2: equipo2,
                                 goalsT1: 0,
                                 goalsT2: 0))
-                        : const CircularProgressIndicator(),
+                        : const Column(
+                            children: [
+                              CircularProgressIndicator(),
+                              SizedBox(
+                                height: 10,
+                              ),
+                              Text('Ooops, you forgot to tilt the players'),
+                              SizedBox(
+                                height: 30,
+                              )
+                            ],
+                          ),
                     const SizedBox(
                       height: AppDimension.APP_HEIGHT60 / 3,
                     ),
