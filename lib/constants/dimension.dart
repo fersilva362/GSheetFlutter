@@ -3,6 +3,7 @@
 class AppDimension {
   static const APP_SCREEN_HEIGHT = 711;
   static const APP_SCREEN_WIDTH = 506.0;
+  static const APP_HEIGHT100 = APP_SCREEN_HEIGHT / 7.11;
   static const APP_HEIGHT600 = APP_SCREEN_HEIGHT / 1.2;
   static const APP_HEIGHT200 = APP_SCREEN_HEIGHT / 3.55;
   static const APP_HEIGHT60 = APP_SCREEN_HEIGHT / 12;

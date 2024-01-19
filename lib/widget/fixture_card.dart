@@ -34,8 +34,8 @@ class FixtureMatch extends StatelessWidget {
                 decoration: const BoxDecoration(
                     color: AppConstant.APP_GREEN,
                     borderRadius: BorderRadius.only(
-                        topLeft: Radius.circular(10),
-                        topRight: Radius.circular(10))),
+                        topLeft: Radius.circular(AppDimension.App_Radius10),
+                        topRight: Radius.circular(AppDimension.App_Radius10))),
                 width: 150,
                 height: 25,
                 child: Center(
@@ -108,7 +108,7 @@ class FixtureMatch extends StatelessWidget {
                 //marcador
                 Expanded(
                   child: SizedBox(
-                    width: 50,
+                    //width: 50,
                     child: Center(
                       child: Text(
                         (date == 'Next Match') ? 'vs' : '$goalsT1 - $goalsT2',
