@@ -71,8 +71,8 @@ class FixtureMatch extends StatelessWidget {
               children: [
                 //player 1
                 Container(
-                  padding: const EdgeInsets.only(
-                      top: 5, left: 5, right: 5, bottom: 10),
+                  /* padding: const EdgeInsets.only(
+                      top: 5, left: 5, right: 5, bottom: 10), */
                   // width: 200,
                   height: 75,
                   child: Row(
@@ -119,8 +119,8 @@ class FixtureMatch extends StatelessWidget {
                 ),
                 // player 2
                 Container(
-                  padding: const EdgeInsets.only(
-                      top: 5, left: 5, right: 5, bottom: 10),
+                  /*  padding: const EdgeInsets.only(
+                      top: 5, left: 5, right: 5, bottom: 10), */
                   // width: 200,
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,

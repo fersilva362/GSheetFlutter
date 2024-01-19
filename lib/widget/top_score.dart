@@ -54,6 +54,7 @@ class TopScores extends StatelessWidget {
                     bottom: AppDimension.APP_P10 / 2,
                     right: AppDimension.APP_P10,
                     left: AppDimension.APP_P10),
+                /* child info */
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
@@ -73,9 +74,9 @@ class TopScores extends StatelessWidget {
                   ],
                 ),
               ),
-              const SizedBox(
+              /* const SizedBox(
                 width: 50,
-              ),
+              ), */
               Container(
                 width: 60,
                 height: 60,
