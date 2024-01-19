@@ -8,4 +8,5 @@ class AppDimension {
   static const APP_HEIGHT60 = APP_SCREEN_HEIGHT / 12;
   static const APP_P10 = APP_SCREEN_HEIGHT / 71.1;
   static const APP_P20 = APP_SCREEN_HEIGHT / 35.55;
+  static const App_Radius10 = APP_SCREEN_HEIGHT / 71.1;
 }

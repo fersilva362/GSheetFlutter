@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:match_flutter/constants/constant.dart';
+import 'package:match_flutter/constants/dimension.dart';
 
 class FixtureMatch extends StatelessWidget {
   final String date;
@@ -19,8 +20,8 @@ class FixtureMatch extends StatelessWidget {
   Widget build(BuildContext context) {
     final re = RegExp(r',\s*');
     return Container(
-      margin: const EdgeInsets.symmetric(horizontal: 10),
-      height: 120,
+      margin: const EdgeInsets.symmetric(horizontal: AppDimension.APP_P10),
+      height: AppDimension.APP_HEIGHT60 * 2,
       width: double.maxFinite,
       child: Column(
         children: [
@@ -28,7 +29,8 @@ class FixtureMatch extends StatelessWidget {
           Row(
             children: [
               Container(
-                padding: const EdgeInsets.only(left: 10, right: 10),
+                padding: const EdgeInsets.only(
+                    left: AppDimension.APP_P10, right: AppDimension.APP_P10),
                 decoration: const BoxDecoration(
                     color: AppConstant.APP_GREEN,
                     borderRadius: BorderRadius.only(
