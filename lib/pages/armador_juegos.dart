@@ -39,7 +39,7 @@ class _ArmadorState extends State<Armador> {
     final sw = MediaQuery.of(context).size.width;
     return Scaffold(
       appBar: AdaptiveNavBar(
-        title: const Text('FUTBOL ENTRE AMIGOS'),
+        title: const Text('HayEquipo'),
         screenWidth: sw,
         navBarItems: [
           NavBarItem(
@@ -57,75 +57,95 @@ class _ArmadorState extends State<Armador> {
         ],
       ),
       body: Center(
-        child: Container(
-          height: AppDimension.APP_HEIGHT600,
-          width: AppDimension.APP_SCREEN_WIDTH,
-          margin: const EdgeInsets.only(left: 20, right: 20, top: 10),
-          child: Column(
-            children: [
-              Column(
+        child: Column(
+          children: [
+            const SizedBox(
+              height: 20,
+            ),
+            const Text(
+              'List of Players',
+              style: TextStyle(fontSize: 22),
+            ),
+            const SizedBox(
+              height: 20,
+            ),
+            Container(
+              height: AppDimension.APP_HEIGHT600,
+              width: AppDimension.APP_SCREEN_WIDTH,
+              margin: const EdgeInsets.only(
+                left: 20,
+                right: 20,
+              ),
+              child: Column(
                 children: [
-                  TextFormField(
-                    controller: _textEditingController,
-                    decoration: const InputDecoration(
-                      hintText: 'I wanna play!',
-                      labelText: 'Add new Player',
-                    ),
+                  Column(
+                    children: [
+                      TextFormField(
+                        controller: _textEditingController,
+                        decoration: const InputDecoration(
+                          hintText: 'I wanna play!',
+                          labelText: 'Add new Player',
+                        ),
+                      ),
+                      TextButton(
+                          onPressed: () {
+                            setState(() {
+                              days.putIfAbsent(
+                                  _textEditingController.text, () => false);
+                            });
+                          },
+                          child: const Text('ADD'))
+                    ],
                   ),
-                  TextButton(
-                      onPressed: () {
-                        setState(() {
-                          days.putIfAbsent(
-                              _textEditingController.text, () => false);
-                        });
-                      },
-                      child: const Text('ADD'))
+                  GetBuilder<TotalMatchController>(
+                    builder: (controller) {
+                      dayKeys.addAll(days.keys);
+                      return SingleChildScrollView(
+                        child: Column(
+                          children: [
+                            Container(
+                              color: Colors.transparent,
+                              height: AppDimension.APP_HEIGHT200 +
+                                  AppDimension.APP_HEIGHT60,
+                              child: ListView.builder(
+                                itemCount: days.length,
+                                itemBuilder: (context, index) {
+                                  String key = dayKeys[index];
+                                  return CheckboxListTile.adaptive(
+                                    activeColor: AppConstant.APP_GREEN,
+                                    value: days[key],
+                                    onChanged: (value) => setState(() {
+                                      days[key] = value!;
+                                    }),
+                                    title: Text(key.toUpperCase()),
+                                  );
+                                },
+                              ),
+                            ),
+                            Container(
+                              height: AppDimension.APP_HEIGHT60 * 2 / 3,
+                              margin: const EdgeInsets.only(
+                                bottom: AppDimension.APP_HEIGHT60,
+                              ),
+                              child: ElevatedButton(
+                                  style: ElevatedButton.styleFrom(
+                                      backgroundColor:
+                                          AppConstant.APP_BUTTON_COLOR),
+                                  onPressed: () {
+                                    Get.toNamed(RoutesHelper.hayEquipo,
+                                        arguments: days);
+                                  },
+                                  child: const Text('Get Soccer Teams')),
+                            )
+                          ],
+                        ),
+                      );
+                    },
+                  )
                 ],
               ),
-              GetBuilder<TotalMatchController>(
-                builder: (controller) {
-                  dayKeys.addAll(days.keys);
-                  return SingleChildScrollView(
-                    child: Column(
-                      children: [
-                        Container(
-                          color: Colors.transparent,
-                          height: AppDimension.APP_HEIGHT200 +
-                              AppDimension.APP_HEIGHT60,
-                          child: ListView.builder(
-                            itemCount: days.length,
-                            itemBuilder: (context, index) {
-                              String key = dayKeys[index];
-                              return CheckboxListTile.adaptive(
-                                activeColor: AppConstant.APP_GREEN,
-                                value: days[key],
-                                onChanged: (value) => setState(() {
-                                  days[key] = value!;
-                                }),
-                                title: Text(key.toUpperCase()),
-                              );
-                            },
-                          ),
-                        ),
-                        SizedBox(
-                          height: AppDimension.APP_HEIGHT60 * 2 / 3,
-                          child: ElevatedButton(
-                              style: ElevatedButton.styleFrom(
-                                  backgroundColor:
-                                      AppConstant.APP_BUTTON_COLOR),
-                              onPressed: () {
-                                Get.toNamed(RoutesHelper.hayEquipo,
-                                    arguments: days);
-                              },
-                              child: const Text('Get Soccer Teams')),
-                        )
-                      ],
-                    ),
-                  );
-                },
-              )
-            ],
-          ),
+            ),
+          ],
         ),
       ),
     );

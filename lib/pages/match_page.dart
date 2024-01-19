@@ -43,7 +43,7 @@ class MatchPage extends StatelessWidget {
                         ? Container(
                             padding: const EdgeInsets.only(
                                 top: 10, left: 10, right: 10),
-                            height: 300,
+                            height: 260,
                             child: FixtureMatch(
                                 date: 'Next Match',
                                 players1: equipo1,
@@ -53,12 +53,9 @@ class MatchPage extends StatelessWidget {
                         : const Column(
                             children: [
                               CircularProgressIndicator(),
-                              SizedBox(
-                                height: 10,
-                              ),
                               Text('Ooops, you forgot to tilt the players'),
                               SizedBox(
-                                height: 30,
+                                height: 10,
                               )
                             ],
                           ),
