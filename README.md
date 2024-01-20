@@ -1,7 +1,7 @@
 # HayEquipo
 
-Here, I show a web & mobile app that retrieves data from a Google Sheets spreadsheet. The project was inspired by a project that [Gonzalo Pozzo](https://links.gonzalopozzo.com/) had done a few weeks ago using [NextJS](https://nextjs.org/). The idea is to use an uploaded spreadsheet file on Google Drive containing info of soccer matchs in columns (date|team 1|goalsTeam1|team 2|goalsTeam2). The file is loaded by the app and used to create a new squad of players.<br/>
-I built two version, one written with [Flutter](https://flutter.dev/) and the other with [React](https://reactjs.org/).<br/>
+Here, I show a web & mobile app that retrieves data from a Google Sheets spreadsheet. The project was inspired by a project that [Gonzalo Pozzo](https://links.gonzalopozzo.com/) had done a few weeks ago using [NextJS](https://nextjs.org/). The idea is to integrate GooglceSheet to a web/app framework, and start by using an uploaded spreadsheet file on Google Drive. Each match event contains information about(date|team 1|goalsTeam1|team 2|goalsTeam2). The *.tsv file is  loaded using fetch in the app and ther response used to create a new squad of players.<br/>
+I built two version, one written with [Flutter](https://flutter.dev/) and other with [React](https://reactjs.org/).<br/>
 ![Flutter](https://img.shields.io/badge/Flutter-_-48c0f8?style=for-the-badge&logo=flutter&logoColor=5dccfc)<br/>
 The flutter version implementes the MVC architecture design pattern and [GetX](https://pub.dev/packages/get) state management.
 ## This is the link to the Flutter Web version: [HayEquipoFL](https://singular-horse-28c838.netlify.app/) 
