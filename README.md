@@ -6,7 +6,7 @@ I built two version, one written with [Flutter](https://flutter.dev/) and other 
 
 ![Flutter](https://img.shields.io/badge/Flutter-_-48c0f8?style=for-the-badge&logo=flutter&logoColor=5dccfc)<br/>
 The flutter version implementes the MVC architecture design pattern and [GetX](https://pub.dev/packages/get) for the state management.
-## This is the link to the Flutter Web version: [HayEquipoFL](https://singular-horse-28c838.netlify.app/) 
+## This is the link to the Flutter Web version: [HayEquipoFL](https://legendary-sopapillas-4b8a86.netlify.app) 
 ### This is the link to the code: [GitHubFL](https://github.com/fersilva362/GSheetFlutter)
 ![React](https://img.shields.io/badge/React-_-05d6f6?style=for-the-badge&logo=react)<br/>
 The ReactJS version implements [ReactRouter](https://reactrouter.com/en/main) to handle routing and [ReactBootstrap](https://react-bootstrap.netlify.app/) to syle the app.
