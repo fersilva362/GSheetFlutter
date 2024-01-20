@@ -5,13 +5,13 @@ I built two version, one written with [Flutter](https://flutter.dev/) and the ot
 ![Flutter](https://img.shields.io/badge/Flutter-_-48c0f8?style=for-the-badge&logo=flutter&logoColor=5dccfc)<br/>
 The flutter version implementes the MVC architecture design pattern and [GetX](https://pub.dev/packages/get) state management.
 ### This is the link to the Flutter Web version [HayEquipoFL](https://singular-horse-28c838.netlify.app/) 
+### GitHub store : [codeFL](https://github.com/fersilva362/GSheetFlutter/edit/master/README.md)
 Below are some of the screen prints 
 ![image](https://github.com/fersilva362/GSheetFlutter/assets/78646102/d76b2c08-d19f-4e75-8d52-bf765fd59cc2)
 
-
-## This is the link to the React Web version![React](https://img.shields.io/badge/React-_-05d6f6?style=for-the-badge&logo=react)<br/>
-
-
+[React](https://img.shields.io/badge/React-_-05d6f6?style=for-the-badge&logo=react)<br/>
+The Ract version implements react-router to handle routing and [bootstrap](https://react-bootstrap.netlify.app/) to syle the app.
+## This is the link to the React Web version! [HayEquipoRX](https://sensational-shortbread-90a9f1.netlify.app/armar-equipo)
 
 
 
