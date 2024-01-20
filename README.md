@@ -1,12 +1,12 @@
 # HayEquipo
-Here, I show a web & mobile app that retrieves data from a GoogleSheets. The project was inspired by a project that [Gonzalo Pozzo](https://links.gonzalopozzo.com/) had done a few weeks ago using [NextJS](https://nextjs.org/). 
+Here, I show a web & mobile app named HayEquipo that retrieves data from a GoogleSheets. The project was inspired by a project that [Gonzalo Pozzo](https://links.gonzalopozzo.com/) had done a few weeks ago using [NextJS](https://nextjs.org/). 
 
 The idea is to integrate GoogleSheet to a framework (React or Flutter), and the first step starts by using an spreadsheet file on Google Drive where each soccer match event contains information about the match in columns: **date|Team 1|goals|Team 2|goals**. The file is  loaded by fetching a *.tsv file in the app and then used to create a new squad of players for the next event.<br/>
 I built two version, one written with [Flutter](https://flutter.dev/) and other with [React](https://reactjs.org/).
 
 ![Flutter](https://img.shields.io/badge/Flutter-_-48c0f8?style=for-the-badge&logo=flutter&logoColor=5dccfc)<br/>
 The flutter version implementes the MVC architecture design pattern and [GetX](https://pub.dev/packages/get) for the state management.
-## This is the link to the Flutter Web version: [HayEquipoFL](https://legendary-sopapillas-4b8a86.netlify.app) 
+## This is the link to the Flutter Web version: [HayEquipoFL](https://silver-dasik-467ca5.netlify.app) 
 ### This is the link to the code: [GitHubFL](https://github.com/fersilva362/GSheetFlutter)
 ![React](https://img.shields.io/badge/React-_-05d6f6?style=for-the-badge&logo=react)<br/>
 The ReactJS version implements [ReactRouter](https://reactrouter.com/en/main) to handle routing and [ReactBootstrap](https://react-bootstrap.netlify.app/) to syle the app.
